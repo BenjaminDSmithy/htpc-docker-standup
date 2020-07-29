@@ -469,6 +469,40 @@ services:
 
 
 
+    #--------------------------------------------#
+   ## REQUESTRR                                  ##
+  ###  Discord bot used to simplify using        ###
+   ##   services like Sonarr/Radarr/Ombi         ##
+    #--------------------------------------------#
+    requestrr:
+        image: darkalfx/requestrr:${DEFAULT_TAG}
+        container_name: requestrr
+        restart: unless-stopped
+        networks:
+            - web
+        expose:
+            - 4545
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/requestrr:/root/config'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=4545'
+            - 'traefik.frontend.rule=Host:requestrr.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
 ########################
 # GLOBAL CONFIGURATION #
 ########################

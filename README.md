@@ -18,6 +18,7 @@ It includes the following Services
 - [Jackett](https://github.com/Jackett/Jackett) - for Torrent Tracker feeds
 - [Tautulli](http://tautulli.com/) - for Plex library statistics and usage
 - [Ombi](https://ombi.io/) - for requesting additional library content
+- [Requestrr](https://github.com/darkalfx/requestrr) - for making requests via a [Discord](https://discord.com/) chatbot which used to simplify using services like Sonarr/Radarr/Ombi via the use of chat!
 - [Portainer](https://portainer.io/) - for managing all of your Docker containers
 - [Watchtower](https://github.com/v2tec/watchtower) - for automatically updating running containers
 - [NetData](https://my-netdata.io/) - for system resource monitoring
