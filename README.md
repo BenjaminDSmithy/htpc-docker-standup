@@ -13,6 +13,7 @@ It includes the following Services
 - [Radarr](https://radarr.video/) - for Movie Management
 - [Lidarr](https://lidarr.audio/) - for Music Management
 - [Readarr](https://readarr.com/) - for eBook Management
+- [Calibre](https://calibre-ebook.com/) - for eBook Management
 - [Jackett](https://github.com/Jackett/Jackett) - for Torrent Tracker feeds
 - [Tautulli](http://tautulli.com/) - for Plex library statistics and usage
 - [Ombi](https://ombi.io/) - for requesting additional library content
@@ -146,6 +147,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 - `SONARR_TAG` - Which version of Sonarr, available options: `latest` (currently v2), `5.14` (latest but run on Mono 5.14), `develop` (currently v2) and `preview` (currently v3). You should use `preview` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
 - `RADARR_TAG` - Which version of Radarr, available options: `latest`, `5.14` (latest but run on Mono 5.14), `nightly` and `preview` (v3 builds). You should use `preview` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
 - `LIDARR_TAG` - Which version of Lidarr, available options: `latest` (Stable Lidarr releases) and `preview` (Nightly Lidarr Releases).
+- `CALIBRE_TAG` - Which version of Calibre (Web), available options: `latest` (Stable Calibre (Web) releases).
 - `OMBI_TAG` - Which version of Ombi, available options: `latest` (Stable Ombi releases), `development` (Releases from the develop branch), and `v4-preview`.
 - `TRAEFIX_TAG` - Currently set to `v1.7.16` due to breaking change in 2.x
 

@@ -259,6 +259,41 @@ services:
 
 
     #--------------------------------------------#
+   ## CALIBRE                                    ##
+   ##  eBook Management                          ##
+    #--------------------------------------------#
+    calibre-web:
+        image: linuxserver/calibre-web:${CALIBRE_TAG}
+        container_name: calibre-web
+        restart: unless-stopped
+        networks:
+            - web
+        expose:
+            - 8083
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/share/data/containers/apps/media/calibre-web:/config'
+            - '/share/data/shared:/shared'
+            - '/share/data/@Recycle:/@Recycle'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=8083'
+            - 'traefik.frontend.rule=Host:calibre.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
+    #--------------------------------------------#
    ## JACKETT                                    ##
    ##  RSS/TORZNAB Feed Creator                  ##
     #--------------------------------------------#
