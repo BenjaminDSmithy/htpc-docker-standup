@@ -459,7 +459,7 @@ services:
             - 'traefik.enable=true'
             - 'traefik.docker.network=${STACK_NAME}_web'
             - 'traefik.port=3579'
-            - 'traefik.frontend.rule=Host:request.${DOMAIN}'
+            - 'traefik.frontend.rule=Host:ombi.${DOMAIN}'
             - 'traefik.frontend.entryPoints=https'
             - 'traefik.frontend.headers.forceSTSHeader=true'
             - 'traefik.frontend.headers.STSSeconds=315360000'
