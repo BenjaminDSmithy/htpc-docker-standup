@@ -7,29 +7,32 @@ This is a simple docker-compose configuration to standup a new HTPC. It's based 
 
 It includes the following Services
 
-- [Plex Media Server](https://www.plex.tv/) - for managing media and serving files to Plex Clients
-- [Deluge](https://deluge-torrent.org/) + [Private Internet Access](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350) - for downloading torrents... "safely"
-- [Sonarr](https://sonarr.tv/) - for TV Series Management
-- [Radarr](https://radarr.video/) - for Movie Management
-- [Lidarr](https://lidarr.audio/) - for Music Management
-- [Readarr](https://readarr.com/) - for eBook Management
-- [Calibre](https://calibre-ebook.com/) - for eBook Management
-- [Bazarr](https://www.bazarr.media/) - for Subtitle Management
-- [Jackett](https://github.com/Jackett/Jackett) - for Torrent Tracker feeds
-- [Tautulli](http://tautulli.com/) - for Plex library statistics and usage
-- [Ombi](https://ombi.io/) - for requesting additional library content
-- [Requestrr](https://github.com/darkalfx/requestrr) - for making requests via a [Discord](https://discord.com/) chatbot which used to simplify using services like Sonarr/Radarr/Ombi via the use of chat!
-- [Portainer](https://portainer.io/) - for managing all of your Docker containers
-- [Watchtower](https://github.com/v2tec/watchtower) - for automatically updating running containers
-- [NetData](https://my-netdata.io/) - for system resource monitoring
-- [Organizr](https://organizr.app/) - for simple web based management
-- [Duplicati](https://www.duplicati.com/) - for backing up data to your favorite provider
-- [InfluxDB](https://www.influxdata.com/) - for time series based database storage
-- [Chronograf](https://www.influxdata.com/time-series-platform/chronograf/) - for making pretty dashboards out of the database data
-- [SpeedTest](https://github.com/sivel/speedtest-cli/) - for performing a speedtest and posting data to the database
-- [Varken](https://github.com/Boerderij/Varken) - for aggregating data from the Plex ecosystem into InfluxDB using Grafana for a frontend
-- [Grafana](https://grafana.com/) - for making dashboards out of the Varken Data
-- [Traefik](https://traefik.io/) - Reverse Proxy and SSL Support
+- MEDIA
+    - [Plex Media Server](https://www.plex.tv/) - for managing media and serving files to Plex Clients
+    - [Tautulli](http://tautulli.com/) - for Plex library statistics and usage
+    - [Organizr](https://organizr.app/) - for simple web based management
+    - [Deluge](https://deluge-torrent.org/) + [Private Internet Access](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350) - for downloading torrents... "safely"
+    - [Sonarr](https://sonarr.tv/) - for TV Series Management
+    - [Radarr](https://radarr.video/) - for Movie Management
+    - [Lidarr](https://lidarr.audio/) - for Music Management
+    - [Readarr](https://readarr.com/) - for eBook Management
+    - [Calibre](https://calibre-ebook.com/) - for eBook Management
+    - [Bazarr](https://www.bazarr.media/) - for Subtitle Management
+    - [Jackett](https://github.com/Jackett/Jackett) - for Torrent Tracker feeds
+    - [Ombi](https://ombi.io/) - for requesting additional library content
+    - [Requestrr](https://github.com/darkalfx/requestrr) - for making requests via a [Discord](https://discord.com/) chatbot which used to simplify using services like Sonarr/Radarr/Ombi via the use of chat!
+
+- SYSTEM
+    - [Portainer](https://portainer.io/) - for managing all of your Docker containers
+    - [Watchtower](https://github.com/v2tec/watchtower) - for automatically updating running containers
+    - [NetData](https://my-netdata.io/) - for system resource monitoring
+    - [Duplicati](https://www.duplicati.com/) - for backing up data to your favorite provider
+    - [InfluxDB](https://www.influxdata.com/) - for time series based database storage
+    - [Chronograf](https://www.influxdata.com/time-series-platform/chronograf/) - for making pretty dashboards out of the database data
+    - [SpeedTest](https://github.com/sivel/speedtest-cli/) - for performing a speedtest and posting data to the database
+    - [Varken](https://github.com/Boerderij/Varken) - for aggregating data from the Plex ecosystem into InfluxDB using Grafana for a frontend
+    - [Grafana](https://grafana.com/) - for making dashboards out of the Varken Data
+    - [Traefik](https://traefik.io/) - Reverse Proxy and SSL Support
 
 This project was heavily inspired by the [MediaBox](https://github.com/tom472/mediabox) project... Many Thanks!
 
