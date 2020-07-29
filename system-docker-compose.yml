@@ -423,6 +423,63 @@ services:
 
 
 
+    #--------------------------------------------#
+   ## UniFi Docker Container                     ##
+   ##  Ubiquiti Networks UniFi Controller        ##
+    #--------------------------------------------#
+
+      #----------------------------------------#
+     #   Mongo DB (Dependency)                  #
+      #----------------------------------------#
+    mongo:
+        image: mongo
+        container_name: unifi-database
+        restart: unless-stopped
+        hostname: unifi-database
+        ##   By default docker-compose will create a new bridge network for the services in the compose file.
+        ##   Enable this to have the services/containers use the existing docker0/default bridge network.
+        ##    # network_mode: bridge
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/unifi/depend/mongodb/data/db:/data/db'
+
+      #----------------------------------------#
+     #   UniFi App                              #
+      #----------------------------------------#
+    unifi:
+        image: jacobalberty/unifi
+        container_name: unifi
+        restart: unless-stopped
+        hostname: unifi
+        ##   By default docker-compose will create a new bridge network for the services in the compose file.
+        ##   Enable this to have the services/containers use the existing docker0/default bridge network.
+        ##    # network_mode: bridge
+        links:
+            - mongo
+        ports:
+            - 3478:3478/udp
+            - 8080:8080
+            - 8443:8443
+            - 8880:8880
+            - 8843:8843
+        ##     Optional: Uncomment to enable speed tests from the UniFi iOS & Android apps
+        ##      - 6789:6789
+        ##     Optional: Uncomment for layer 2 broadcast discovery if container running on a host in the local LAN
+        ##      - 10001:10001/udp
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/unifi/cert:/usr/lib/unifi/cert'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/unifi/data:/usr/lib/unifi/data'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/unifi/logs:/usr/lib/unifi/logs'
+            - /etc/localtime:/etc/localtime:ro
+        environment:
+            - DB_MONGO_LOCAL=false
+            - DB_MONGO_URI=mongodb://mongo:27017/unifi
+            - STATDB_MONGO_URI=mongodb://mongo:27017/unifi_stat
+            - TZ=UTC
+            - UNIFI_DB_NAME=unifi
+
+
+
+
 ########################
 # GLOBAL CONFIGURATION #
 ########################
