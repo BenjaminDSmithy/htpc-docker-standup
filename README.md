@@ -30,8 +30,9 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 
 
 ## Recomended Folder Structure
+
+#### /shared
 ```
-shared
 ├── downloads
 ├── media
 ├── scratch
@@ -39,8 +40,8 @@ shared
 ├── torrents-manual
 └── watch
 ```
+#### /shared/downloads
 ```
-shared/downloads
 ├── complete
 │   ├── blackhole
 │   │   ├── books
@@ -65,8 +66,8 @@ shared/downloads
     ├── nzb
     └── torrents
 ```
+#### /shared/media
 ```
-shared/media
 ├── AudioBooks
 ├── Books
 ├── Comics
@@ -137,7 +138,7 @@ shared/media
 
 ### Environment File
 
-# Version tags
+#### -- Version Tags --
 - `DEFAULT_TAG` - Defaults to the `latest` tag.
 - `PLEX_TAG` - Which version of Plex Media Server, available options: `latest`, `plexpass` and `public`. You should use `latest` unless you have special requirements or are a Plex Pass subscriber.
 - `SONARR_TAG` - Which version of Sonarr, available options: `latest` (currently v2), `5.14` (latest but run on Mono 5.14), `develop` (currently v2) and `preview` (currently v3). You should use `preview` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
@@ -146,13 +147,13 @@ shared/media
 - `TRAEFIX_TAG` - Currently set to `v1.7.16` due to breaking change in 2.x
 
 
-# Containter/path name version
+#### -- Containter / Path Name Version --
 - `SONARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (sonarr-v3)
 - `RADARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (radarr-v3)
 - `OMBI_VERSION=` - Sets both the container + volume path name suffix e.g. v4 (ombi-v4)
 
 
-# Global settings
+#### -- Global Settings --
 - `LOCALUSER=` - This is the local user of your linux account and account running docker
 - `HOSTNAME=` - Hostame of the server, can be found by executing `hostname` from command line
 - `IP_ADDRESS=` - Local IP Address of the server, should be static
