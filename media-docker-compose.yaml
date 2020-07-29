@@ -227,6 +227,41 @@ services:
 
 
     #--------------------------------------------#
+   ## SONARR (4K)                                ##
+   ##  TV Series Management                      ##
+    #--------------------------------------------#
+    sonarr4k:
+        image: linuxserver/sonarr:${SONARR_TAG}
+        container_name: sonarr4k-${SONARR_VERSION}
+        restart: unless-stopped
+        networks:
+            - web
+        expose:
+            - 9090
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/sonarr-${SONARR_VERSION}:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=9090'
+            - 'traefik.frontend.rule=Host:sonarr4k.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
+    #--------------------------------------------#
    ## RADARR                                     ##
    ##  Movie Management                          ##
     #--------------------------------------------#
@@ -252,6 +287,41 @@ services:
             - 'traefik.docker.network=${STACK_NAME}_web'
             - 'traefik.port=7878'
             - 'traefik.frontend.rule=Host:radarr.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
+    #--------------------------------------------#
+   ## RADARR (4K)                                ##
+   ##  Movie Management                          ##
+    #--------------------------------------------#
+    radarr4k:
+        image: linuxserver/radarr:${RADARR_TAG}
+        container_name: radarr4k-${RADARR_VERSION}
+        restart: unless-stopped
+        networks:
+            - web
+        expose:
+            - 7979
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/radarr4k-${RADARR_VERSION}:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=7979'
+            - 'traefik.frontend.rule=Host:radarr4k.${DOMAIN}'
             - 'traefik.frontend.entryPoints=https'
             - 'traefik.frontend.headers.forceSTSHeader=true'
             - 'traefik.frontend.headers.STSSeconds=315360000'
