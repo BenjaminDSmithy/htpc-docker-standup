@@ -468,6 +468,5 @@ services:
 ########################
 
 networks:
-    internal:
     web:
 
