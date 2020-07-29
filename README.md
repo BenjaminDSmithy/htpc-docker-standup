@@ -12,6 +12,7 @@ It includes the following Services
 - [Sonarr](https://sonarr.tv/) - for TV Series Management
 - [Radarr](https://radarr.video/) - for Movie Management
 - [Lidarr](https://lidarr.audio/) - for Music Management
+- [Readarr](https://readarr.com/) - for eBook Management
 - [Jackett](https://github.com/Jackett/Jackett) - for Torrent Tracker feeds
 - [Tautulli](http://tautulli.com/) - for Plex library statistics and usage
 - [Ombi](https://ombi.io/) - for requesting additional library content
@@ -147,6 +148,14 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 - `LIDARR_TAG` - Which version of Lidarr, available options: `latest` (Stable Lidarr releases) and `preview` (Nightly Lidarr Releases).
 - `OMBI_TAG` - Which version of Ombi, available options: `latest` (Stable Ombi releases), `development` (Releases from the develop branch), and `v4-preview`.
 - `TRAEFIX_TAG` - Currently set to `v1.7.16` due to breaking change in 2.x
+
+---
+- `READARR_TAG` - Which version of Readarr, available options: `latest` (UNAVAILABLE), `stable` (UNAVAILABLE), `untable` (AVAILABLE). it is recommended to use specific build tags. Latest being `unstable-0.1.0.136`.
+
+| WARNING |
+| ----------- |
+| `READARR` updates require a fresh database until further notice. There's only a unstable tag for the moment. |
+---
 
 
 #### -- Containter / Path Name Version --
