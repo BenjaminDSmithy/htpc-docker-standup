@@ -39,6 +39,41 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 | ----------- |
 | `data` is used for root in the below example but you can choose your own as there is a ENV variable exposed called "`${ROOT_FOLDER_PATH}`". |
 
+#### data/containers
+```
+├── apps
+├── repos
+└── standalone
+```
+#### data/containers/apps
+```
+├── media
+│   ├── bazarr
+│   ├── calibre-web
+│   ├── delugevpn
+│   ├── jackett
+│   ├── lidarr
+│   ├── ombi-v4
+│   ├── organizr-v2
+│   ├── plex-server
+│   ├── radarr4k-v3
+│   ├── radarr-v3
+│   ├── readarr-unstable
+│   ├── requestrr
+│   ├── sonarr4k-v3
+│   ├── sonarr-v3
+│   └── tautulli
+└── system
+    ├── chronograf
+    ├── duplicati
+    ├── grafana
+    ├── influxdb
+    ├── portainer
+    └── varken
+```
+
+---
+
 #### data/shared
 ```
 ├── downloads
@@ -67,9 +102,12 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 │   │   ├── tv
 │   │   └── tv4k
 │   └── torrents
-│       ├── movies
-│       ├── tv
-│       └── tv4k
+│   │   ├── books
+│   │   ├── movies
+│   │   ├── movies4k
+│   │   ├── music
+│   │   ├── tv
+│   │   └── tv4k
 └── incomplete
     ├── nzb
     └── torrents
@@ -98,6 +136,9 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 ├── MusicVideos
 ├── Pictures
 ├── Trailers
+│   ├── Games
+│   ├── Movies
+│   └── TV
 ├── Tutorials
 ├── TV
 │   ├── ANIME
