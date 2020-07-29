@@ -55,40 +55,6 @@ services:
 
 
     #--------------------------------------------#
-   ## DUPLICATI                                  ##
-   ##  Backup Software                           ##
-    #--------------------------------------------#
-    duplicati:
-        image: linuxserver/duplicati:${DEFAULT_TAG}
-        container_name: duplicati
-        restart: unless-stopped
-        networks:
-            - web
-        expose:
-            - 8200
-        environment:
-            - TZ=${TZ}
-            - PUID=${PUID}
-            - PGID=${PGID}
-        volumes:
-            - '/${ROOT_FOLDER_PATH}/containers/apps/system/duplicati:/config'
-            - '/share/data:/data'
-            - '/etc/localtime:/etc/localtime:ro'
-        labels:
-            - 'traefik.enable=true'
-            - 'traefik.docker.network=${STACK_NAME}_web'
-            - 'traefik.port=8200'
-            - 'traefik.frontend.rule=Host:duplicati.${DOMAIN}'
-            - 'traefik.frontend.entryPoints=https'
-            - 'traefik.frontend.headers.forceSTSHeader=true'
-            - 'traefik.frontend.headers.STSSeconds=315360000'
-            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
-            - 'traefik.frontend.headers.STSPreload=true'
-
-
-
-
-    #--------------------------------------------#
    ## WATCHTOWER                                 ##
    ##  Automatic Update Service for Docker VMs   ##
     #--------------------------------------------#
@@ -148,6 +114,40 @@ services:
             - 'traefik.docker.network=${STACK_NAME}_web'
             - 'traefik.port=19999'
             - 'traefik.frontend.rule=Host:netdata.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
+    #--------------------------------------------#
+   ## DUPLICATI                                  ##
+   ##  Backup Software                           ##
+    #--------------------------------------------#
+    duplicati:
+        image: linuxserver/duplicati:${DEFAULT_TAG}
+        container_name: duplicati
+        restart: unless-stopped
+        networks:
+            - web
+        expose:
+            - 8200
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/duplicati:/config'
+            - '/share/data:/data'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=8200'
+            - 'traefik.frontend.rule=Host:duplicati.${DOMAIN}'
             - 'traefik.frontend.entryPoints=https'
             - 'traefik.frontend.headers.forceSTSHeader=true'
             - 'traefik.frontend.headers.STSSeconds=315360000'

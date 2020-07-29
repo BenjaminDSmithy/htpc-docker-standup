@@ -64,6 +64,79 @@ services:
 
 
     #--------------------------------------------#
+   ## TAUTULLI                                   ##
+   ##  Monitoring Service for PLEX Usage         ##
+    #--------------------------------------------#
+    plexpy:
+        image: linuxserver/tautulli:${DEFAULT_TAG}
+        container_name: tautulli
+        restart: always
+        networks:
+            - web
+        expose:
+            - 8181
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/tautulli:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/Library/Application Support/Plex Media Server/Logs:/logs:ro'
+            - '/etc/localtime:/etc/localtime:ro'
+        depends_on:
+            - plex
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=8181'
+            - 'traefik.frontend.rule=Host:plexpy.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
+    #--------------------------------------------#
+   ## ORGANIZR                                   ##
+   ##  Web Frontend for HTPC Management          ##
+    #--------------------------------------------#
+    organizr:
+        image: organizrtools/organizr-v2:${DEFAULT_TAG}
+        container_name: organizr-${ORGANIZR_VERSION}
+        restart: unless-stopped
+        networks:
+            - web
+        ports:
+            - '39280:39280/tcp'
+            - '443/tcp'
+            - '80/tcp'
+        expose:
+            - 39280
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/organizr-${ORGANIZR_VERSION}:/config'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=39280'
+            - 'traefik.frontend.rule=Host:manage.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
+    #--------------------------------------------#
    ## DELUGEVPN                                  ##
    ##  Deluge Torrent Client + VPN               ##
     #--------------------------------------------#
@@ -364,42 +437,6 @@ services:
 
 
     #--------------------------------------------#
-   ## TAUTULLI                                   ##
-   ##  Monitoring Service for PLEX Usage         ##
-    #--------------------------------------------#
-    plexpy:
-        image: linuxserver/tautulli:${DEFAULT_TAG}
-        container_name: tautulli
-        restart: always
-        networks:
-            - web
-        expose:
-            - 8181
-        environment:
-            - TZ=${TZ}
-            - PUID=${PUID}
-            - PGID=${PGID}
-        volumes:
-            - '/${ROOT_FOLDER_PATH}/containers/apps/media/tautulli:/config'
-            - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/Library/Application Support/Plex Media Server/Logs:/logs:ro'
-            - '/etc/localtime:/etc/localtime:ro'
-        depends_on:
-            - plex
-        labels:
-            - 'traefik.enable=true'
-            - 'traefik.docker.network=${STACK_NAME}_web'
-            - 'traefik.port=8181'
-            - 'traefik.frontend.rule=Host:plexpy.${DOMAIN}'
-            - 'traefik.frontend.entryPoints=https'
-            - 'traefik.frontend.headers.forceSTSHeader=true'
-            - 'traefik.frontend.headers.STSSeconds=315360000'
-            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
-            - 'traefik.frontend.headers.STSPreload=true'
-
-
-
-
-    #--------------------------------------------#
    ## OMBI                                       ##
    ##  Request Service for Plex Content          ##
     #--------------------------------------------#
@@ -423,43 +460,6 @@ services:
             - 'traefik.docker.network=${STACK_NAME}_web'
             - 'traefik.port=3579'
             - 'traefik.frontend.rule=Host:request.${DOMAIN}'
-            - 'traefik.frontend.entryPoints=https'
-            - 'traefik.frontend.headers.forceSTSHeader=true'
-            - 'traefik.frontend.headers.STSSeconds=315360000'
-            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
-            - 'traefik.frontend.headers.STSPreload=true'
-
-
-
-
-    #--------------------------------------------#
-   ## ORGANIZR                                   ##
-   ##  Web Frontend for HTPC Management          ##
-    #--------------------------------------------#
-    organizr:
-        image: organizrtools/organizr-v2:${DEFAULT_TAG}
-        container_name: organizr-${ORGANIZR_VERSION}
-        restart: unless-stopped
-        networks:
-            - web
-        ports:
-            - '39280:39280/tcp'
-            - '443/tcp'
-            - '80/tcp'
-        expose:
-            - 39280
-        environment:
-            - TZ=${TZ}
-            - PUID=${PUID}
-            - PGID=${PGID}
-        volumes:
-            - '/${ROOT_FOLDER_PATH}/containers/apps/media/organizr-${ORGANIZR_VERSION}:/config'
-            - '/etc/localtime:/etc/localtime:ro'
-        labels:
-            - 'traefik.enable=true'
-            - 'traefik.docker.network=${STACK_NAME}_web'
-            - 'traefik.port=39280'
-            - 'traefik.frontend.rule=Host:manage.${DOMAIN}'
             - 'traefik.frontend.entryPoints=https'
             - 'traefik.frontend.headers.forceSTSHeader=true'
             - 'traefik.frontend.headers.STSSeconds=315360000'
