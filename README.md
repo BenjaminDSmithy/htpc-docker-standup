@@ -137,10 +137,22 @@ shared/media
 
 ### Environment File
 
+# Version tags
+- `DEFAULT_TAG` - Defaults to the `latest` tag.
+- `PLEX_TAG` - Which version of Plex Media Server, available options: `latest`, `plexpass` and `public`. You should use `latest` unless you have special requirements or are a Plex Pass subscriber.
+- `SONARR_TAG` - Which version of Sonarr, available options: `latest` (currently v2), `5.14` (latest but run on Mono 5.14), `develop` (currently v2) and `preview` (currently v3). You should use `preview` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
+- `RADARR_TAG` - Which version of Radarr, available options: `latest`, `5.14` (latest but run on Mono 5.14), `nightly` and `preview` (v3 builds). You should use `preview` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
+- `OMBI_TAG` - Which version of Ombi, available options: `latest` (Stable Ombi releases), `development` (Releases from the develop branch), and `v4-preview`.
+- `TRAEFIX_TAG` - Currently set to `v1.7.16` due to breaking change in 2.x
+
+
+# Containter/path name version
 - `SONARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (sonarr-v3)
 - `RADARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (radarr-v3)
 - `OMBI_VERSION=` - Sets both the container + volume path name suffix e.g. v4 (ombi-v4)
 
+
+# Global settings
 - `LOCALUSER=` - This is the local user of your linux account and account running docker
 - `HOSTNAME=` - Hostame of the server, can be found by executing `hostname` from command line
 - `IP_ADDRESS=` - Local IP Address of the server, should be static
@@ -153,7 +165,6 @@ shared/media
 - `VPN_REMOTE=` - The remote server you want to connect to (must support port forwarding)
 - `CIDR_ADDRESS=` - IP/netmask entries which allow access to the server without requiring authorization. We recommend you set this only if you do not sign in your server. For example `192.168.1.0/24,172.16.0.0/16` will allow access to the entire `192.168.1.x` range and the `172.16.x.x`
 - `TZ=` - Set the timezone inside the container. For example: `Europe/London`. The complete list can be found here: [https://en.wikipedia.org/wiki/List_of_tz_database_time_zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-- `PMSTAG=` - Which version of Plex Media Server, available options: `latest`, `plexpass` and `public`. You should use `latest` unless you have special requirements or are a Plex Pass subscriber.
 - `EMAIL=` - Email address to be used for Let's Encrypt SSL certificate validation - `someone@somewhere.com`
 - `DOMAIN=` - Public domain to use for accessing services via a public domain - `server.domain.com`
 - `WATCHTOWER_EMAIL=` - Email address you'd like Watchtower to notify for any notifications - `someone@somewhere.com`
