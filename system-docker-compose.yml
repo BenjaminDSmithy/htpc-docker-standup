@@ -25,7 +25,7 @@ services:
    ##  Docker Container Management               ##
     #--------------------------------------------#
     portainer:
-        image: portainer/portainer:latest
+        image: portainer/portainer:${DEFAULT_TAG}
         container_name: portainer
         restart: unless-stopped
         networks:
@@ -59,7 +59,7 @@ services:
    ##  Backup Software                           ##
     #--------------------------------------------#
     duplicati:
-        image: linuxserver/duplicati
+        image: linuxserver/duplicati:${DEFAULT_TAG}
         container_name: duplicati
         restart: unless-stopped
         networks:
@@ -93,7 +93,7 @@ services:
    ##  Automatic Update Service for Docker VMs   ##
     #--------------------------------------------#
     watchtower:
-        image: v2tec/watchtower
+        image: v2tec/watchtower:${DEFAULT_TAG}
         container_name: watchtower
         restart: unless-stopped
         networks:
@@ -124,7 +124,7 @@ services:
    ##  System Resource Monitoring Service        ##
     #--------------------------------------------#
     netdata:
-        image: titpetric/netdata
+        image: titpetric/netdata:${DEFAULT_TAG}
         container_name: netdata
         restart: unless-stopped
         networks:
@@ -162,7 +162,7 @@ services:
    ##  Time Series Database                      ##
     #--------------------------------------------#
     influxdb:
-        image: influxdb
+        image: influxdb:${DEFAULT_TAG}
         container_name: influxdb
         restart: unless-stopped
         networks:
@@ -187,7 +187,7 @@ services:
    ##  Dashboard Tool for Speedtest              ##
     #--------------------------------------------#
     chronograf:
-        image: chronograf
+        image: chronograf:${DEFAULT_TAG}
         container_name: chronograf
         restart: unless-stopped
         networks:
@@ -225,7 +225,7 @@ services:
    ##  Speedtest-CLI and Post to InfluxDB        ##
     #--------------------------------------------#
     speedtest:
-        image: phikai/speedtest
+        image: phikai/speedtest:${DEFAULT_TAG}
         container_name: speedtest
         restart: unless-stopped
         networks:
@@ -248,7 +248,7 @@ services:
    ##  Standalone Plex Data Aggeregator          ##
     #--------------------------------------------#
     varken:
-        image: boerderij/varken
+        image: boerderij/varken:${DEFAULT_TAG}
         container_name: varken
         restart: unless-stopped
         networks:
@@ -273,7 +273,7 @@ services:
    ##  Frontend for Varken                       ##
     #--------------------------------------------#
     grafana:
-        image: grafana/grafana
+        image: grafana/grafana:${DEFAULT_TAG}
         container_name: grafana
         restart: unless-stopped
         networks:
@@ -320,7 +320,7 @@ services:
    ##  Reverse Proxy + SSL Support               ##
     #--------------------------------------------#
     traefik:
-        image: traefik:v1.7.16
+        image: traefik:${TRAEFIX_TAG}
         container_name: traefik
         restart: unless-stopped
         networks:

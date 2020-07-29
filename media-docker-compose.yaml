@@ -26,7 +26,7 @@ services:
     #--------------------------------------------#
     plex:
         container_name: plex-server
-        image: plexinc/pms-docker:${PMSTAG}
+        image: plexinc/pms-docker:${PLEX_TAG}
         restart: always
         hostname: ${HOSTNAME}
         networks:
@@ -65,7 +65,7 @@ services:
    ##  Deluge Torrent Client + VPN               ##
     #--------------------------------------------#
     arch-delugevpn:
-        image: binhex/arch-delugevpn
+        image: binhex/arch-delugevpn:${DEFAULT_TAG}
         container_name: delugevpn
         restart: unless-stopped
         networks:
@@ -119,7 +119,7 @@ services:
    ##  TV Series Management                      ##
     #--------------------------------------------#
     sonarr:
-        image: linuxserver/sonarr
+        image: linuxserver/sonarr:${SONARR_TAG}
         container_name: sonarr-${SONARR_VERSION}
         restart: unless-stopped
         networks:
@@ -151,7 +151,7 @@ services:
    ##  Movie Management                          ##
     #--------------------------------------------#
     radarr:
-        image: linuxserver/radarr
+        image: linuxserver/radarr:${RADARR_TAG}
         container_name: radarr-${RADARR_VERSION}
         restart: unless-stopped
         networks:
@@ -183,7 +183,7 @@ services:
    ##  RSS/TORZNAB Feed Creator                  ##
     #--------------------------------------------#
     jackett:
-        image: linuxserver/jackett
+        image: linuxserver/jackett:${DEFAULT_TAG}
         container_name: jackett
         restart: unless-stopped
         networks:
@@ -215,7 +215,7 @@ services:
    ##  Monitoring Service for PLEX Usage         ##
     #--------------------------------------------#
     plexpy:
-        image: linuxserver/tautulli
+        image: linuxserver/tautulli:${DEFAULT_TAG}
         container_name: tautulli
         restart: always
         networks:
@@ -248,7 +248,7 @@ services:
    ##  Request Service for Plex Content          ##
     #--------------------------------------------#
     ombi:
-        image: linuxserver/ombi
+        image: linuxserver/ombi:${OMBI_TAG}
         container_name: ombi-${OMBI_VERSION}
         restart: unless-stopped
         networks:
@@ -278,7 +278,7 @@ services:
    ##  Web Frontend for HTPC Management          ##
     #--------------------------------------------#
     muximux:
-        image: linuxserver/muximux
+        image: linuxserver/muximux:${DEFAULT_TAG}
         container_name: muximux
         restart: unless-stopped
         networks:
