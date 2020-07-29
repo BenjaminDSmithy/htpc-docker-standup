@@ -28,6 +28,81 @@ It includes the following Services
 
 This project was heavily inspired by the [MediaBox](https://github.com/tom472/mediabox) project... Many Thanks!
 
+
+## Recomended Folder Structure
+```
+shared
+├── downloads
+├── media
+├── scratch
+├── scratchNAS
+├── torrents-manual
+└── watch
+```
+```
+shared/downloads
+├── complete
+│   ├── blackhole
+│   │   ├── books
+│   │   ├── movies
+│   │   ├── movies4k
+│   │   ├── music
+│   │   ├── tv
+│   │   └── tv4k
+│   ├── nzb
+│   │   ├── books
+│   │   ├── generic
+│   │   ├── movies
+│   │   ├── movies4k
+│   │   ├── music
+│   │   ├── tv
+│   │   └── tv4k
+│   └── torrents
+│       ├── movies
+│       ├── tv
+│       └── tv4k
+└── incomplete
+    ├── nzb
+    └── torrents
+```
+```
+shared/media
+├── AudioBooks
+├── Books
+├── Comics
+├── DVR
+│   ├── Movies
+│   ├── TV
+├── HomeVideos
+├── Movies
+│   ├── ANIME
+│   ├── DOCS
+│   ├── HD
+│   ├── KIDS
+│   ├── NEW
+│   ├── SD
+│   ├── SHORT
+│   ├── STAND-UP
+│   ├── UNKNOWN
+├── Movies4K
+├── Music
+├── MusicVideos
+├── Pictures
+├── Trailers
+├── Tutorials
+├── TV
+│   ├── ANIME
+│   ├── CONTINUING
+│   ├── DOCS
+│   ├── ENDED
+│   ├── KIDS
+│   ├── NEW
+│   ├── STAND-UP
+├── TV4K
+├── Videos
+└── VideosNAS
+```
+
 ## Known Issues
 - [ ] Sometimes the Deluge + VPN Container disconnects and can't re-establish a forwarded port connection. 
 
@@ -61,6 +136,11 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 11. Profit.
 
 ### Environment File
+
+- `SONARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (sonarr-v3)
+- `RADARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (radarr-v3)
+- `OMBI_VERSION=` - Sets both the container + volume path name suffix e.g. v4 (ombi-v4)
+
 - `LOCALUSER=` - This is the local user of your linux account and account running docker
 - `HOSTNAME=` - Hostame of the server, can be found by executing `hostname` from command line
 - `IP_ADDRESS=` - Local IP Address of the server, should be static

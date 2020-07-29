@@ -24,7 +24,7 @@ services:
     # Robust Media Server
     # ----------------------------------------
     plex:
-        container_name: plex
+        container_name: plex-server
         image: plexinc/pms-docker:${PMSTAG}
         restart: unless-stopped
         networks:
@@ -48,12 +48,9 @@ services:
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
         hostname: ${HOSTNAME}
         volumes:
-            - './plex:/config'
-            - './plex/transcode:/transcode'
-            - '/media/Media/Media/Movies:/data/movies'
-            - '/media/Media/Media/TVShows:/data/tvshows'
-            - '/media/Media/Media/Kid Movies:/data/kidmovies'
-            - '/media/Media/Media/Kid TV:/data/kidtvshows'
+            - '/share/data/containers/apps/media/plex-server/config:/config'
+            - '/share/data/containers/apps/media/plex-server/transcode:/transcode'
+            - '/share/data/shared:/shared'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -100,9 +97,10 @@ services:
             - DEBUG=false
 
         volumes:
-            - '/media/Media/Torrents:/data'
-            - './delugevpn/config:/config'
-            - './ovpn/${VPNPROVIDER}:/config/openvpn'
+
+            - '/share/data/containers/apps/media/delugevpn:/config'
+            - '/share/data/containers/apps/media/delugevpn/openvpn/${VPNPROVIDER}:/${VPNPROVIDER}'
+            - '/share/data/shared/downloads/torrents:/shared/downloads/torrents'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -121,7 +119,7 @@ services:
     # ----------------------------------------
     sonarr:
         image: linuxserver/sonarr
-        container_name: sonarr
+        container_name: sonarr-${SONARR_VERSION}
         restart: unless-stopped
         networks:
             - web
@@ -132,10 +130,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './sonarr:/config'
-            - '/media/Media/Torrents/Completed:/data/Completed'
-            - '/media/Media/Media/TVShows:/tv'
-            - '/media/Media/Media/Kid TV:/kidtv'
+            - '/share/data/containers/apps/media/sonarr-${SONARR_VERSION}:/config'
+            - '/share/data/shared:/shared'
+            - '/share/data/@Recycle:/@Recycle'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -154,7 +151,7 @@ services:
     # ----------------------------------------
     radarr:
         image: linuxserver/radarr
-        container_name: radarr
+        container_name: radarr-${RADARR_VERSION}
         restart: unless-stopped
         networks:
             - web
@@ -165,10 +162,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './radarr:/config'
-            - '/media/Media/Torrents/Completed:/data/Completed'
-            - '/media/Media/Media/Movies:/movies'
-            - '/media/Media/Media/Kid Movies:/kidmovies'
+            - '/share/data/containers/apps/media/radarr-${RADARR_VERSION}:/config'
+            - '/share/data/shared:/shared'
+            - '/share/data/@Recycle:/@Recycle'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -198,8 +194,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './jackett:/config'
-            - '/media/Media/Torrents/Completed:/downloads'
+            - '/share/data/containers/apps/media/jackett:/config'
+            - '/share/data/shared/downloads/torrents:/shared/downloads/torrents'
+            - '/share/data/shared:/shared'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -218,7 +215,7 @@ services:
     # ----------------------------------------
     plexpy:
         image: linuxserver/tautulli
-        container_name: plexpy
+        container_name: tautulli
         restart: unless-stopped
         networks:
             - web
@@ -229,8 +226,8 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './plexpy:/config'
-            - './plex/Library/Application Support/Plex Media Server/Logs:/logs:ro'
+            - '/share/data/containers/apps/media/tautulli:/config'
+            - '/share/data/containers/apps/media/plex-server/Library/Application Support/Plex Media Server/Logs:/logs:ro'
             - '/etc/localtime:/etc/localtime:ro'
         depends_on:
             - plex
@@ -251,7 +248,7 @@ services:
     # ----------------------------------------
     ombi:
         image: linuxserver/ombi
-        container_name: ombi
+        container_name: ombi-${OMBI_VERSION}
         restart: unless-stopped
         networks:
             - web
@@ -262,7 +259,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './ombi:/config'
+            - '/share/data/containers/apps/media/ombi-${OMBI_VERSION}:/config'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -292,7 +289,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './portainer:/data'
+            - '/share/data/containers/apps/media/portainer:/config'
             - '/var/run/docker.sock:/var/run/docker.sock'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
@@ -385,7 +382,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './muximux:/config'
+            - '/share/data/containers/apps/media/muximux:/config'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -415,8 +412,8 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './duplicati:/config'
-            - '/media/Media/Media:/media'
+            - '/share/data/containers/apps/media/duplicati:/config'
+            - '/share/data:/data'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -447,7 +444,7 @@ services:
             - PGID=${PGID}
             - INFLUXDB_DB=speedtest; CREATE DATABASE varken;
         volumes:
-            - './influxdb:/var/lib/influxdb'
+            - '/share/data/containers/apps/media/influxdb:/var/lib/influxdb'
         labels:
             - 'traefik.enable=false'
 
@@ -469,7 +466,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './chronograf:/var/lib/chronograf'
+            - '/share/data/containers/apps/media/chronograf:/var/lib/chronograf'
         command:
             - chronograf
             - --influxdb-url=http://influxdb:8086
@@ -521,7 +518,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - './varken:/config'
+            - '/share/data/containers/apps/media/varken:/config'
             - '/etc/localtime:/etc/localtime:ro'
         depends_on:
             - influxdb
@@ -558,7 +555,7 @@ services:
             - GF_SMTP_PASSWORD=${SMTP_PASS}
             - GF_SMTP_FROM_ADDRESS=${SMTP_FROM}
         volumes:
-            - './grafana:/config'
+            - '/share/data/containers/apps/media/grafana:/config'
         depends_on:
             - influxdb
         labels:
@@ -592,7 +589,7 @@ services:
             - PGID=${PGID}
         volumes:
             - '/var/run/docker.sock:/var/run/docker.sock'
-            - './traefik:/etc/traefik/acme'
+            - '/share/data/containers/apps/media/traefik:/etc/traefik/acme'
         command:
             - --docker
             - --api
