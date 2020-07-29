@@ -21,7 +21,7 @@ It includes the following Services
 - [Portainer](https://portainer.io/) - for managing all of your Docker containers
 - [Watchtower](https://github.com/v2tec/watchtower) - for automatically updating running containers
 - [NetData](https://my-netdata.io/) - for system resource monitoring
-- [Muximux](https://github.com/mescon/Muximux) - for simple web based management
+- [Organizr](https://organizr.app/) - for simple web based management
 - [Duplicati](https://www.duplicati.com/) - for backing up data to your favorite provider
 - [InfluxDB](https://www.influxdata.com/) - for time series based database storage
 - [Chronograf](https://www.influxdata.com/time-series-platform/chronograf/) - for making pretty dashboards out of the database data
@@ -154,6 +154,13 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 - `LIDARR_TAG` - Which version of Lidarr, available options: `latest` (Stable Lidarr releases) and `preview` (Nightly Lidarr Releases).
 - `CALIBRE_TAG` - Which version of Calibre (Web), available options: `latest` (Stable Calibre (Web) releases).
 - `BAZARR_TAG` - Which version of Bazarr, available options: `latest` (Stable Bazarr releases)
+- `ORGANIZR_TAG` - Which version of Organizr, available options:
+    - The `latest` tag will get you the original Organizr v2 image.
+    - The php-fpm tag includes the implementation of a socket connection for PHP-FPM instead of an HTTP connection. It also includes the PM changes for the www.conf file that we recommend to users that are just getting started. One thing to note is that, if you mounted the /etc/php7/php-fpm.d/ directory for the container to your Host, you MUST recreate your container WITHOUT that mount. You will also want to remove the /path/to/Org/config/php directory from your Docker Host as that can cause issues as well. This is designed as a drop-in to get PHP-FPM working without having to mount extra directories, etc.
+    - The `plex` tag will get you the original Organizr v2 image, but with some changes found in the plex-theme branch of the GitHub repo to accommodate the Plex Theme for Organizr v2 by Burry.
+    - The `armhf` tag is an adaptation of the php-fpm image for ArmHF platforms like the RaspberryPi.
+    - The `arm64` tag is an adaptation of the php-fpm image for Arm64 platforms like the ASRock64.
+    - The `dev-` equivalent tags pull from the v2-develop branch of the GitHub repository instead of the main v2-master branch.
 - `OMBI_TAG` - Which version of Ombi, available options: `latest` (Stable Ombi releases), `development` (Releases from the develop branch), and `v4-preview`.
 - `TRAEFIX_TAG` - Currently set to `v1.7.16` due to breaking change in 2.x
 
@@ -170,6 +177,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 - `SONARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (sonarr-v3)
 - `RADARR_VERSION=` - Sets both the container + volume path name suffix e.g. v3 (radarr-v3)
 - `OMBI_VERSION=` - Sets both the container + volume path name suffix e.g. v4 (ombi-v4)
+- `ORGANIZR_VERSION=` - Sets both the container + volume path name suffix e.g. v2 (organizr-v2)
 
 
 #### -- Global Settings --

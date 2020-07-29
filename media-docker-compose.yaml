@@ -433,34 +433,40 @@ services:
 
 
     #--------------------------------------------#
-   ## MUXIMUX                                    ##
+   ## ORGANIZR                                   ##
    ##  Web Frontend for HTPC Management          ##
     #--------------------------------------------#
-    muximux:
-        image: linuxserver/muximux:${DEFAULT_TAG}
-        container_name: muximux
+    organizr:
+        image: organizrtools/organizr-v2:${DEFAULT_TAG}
+        container_name: organizr-${ORGANIZR_VERSION}
         restart: unless-stopped
         networks:
             - web
+        ports:
+            - '39280:39280/tcp'
+            - '443/tcp'
+            - '80/tcp'
         expose:
-            - 80
+            - 39280
         environment:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/${ROOT_FOLDER_PATH}/containers/apps/media/muximux:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/organizr-${ORGANIZR_VERSION}:/config'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
             - 'traefik.docker.network=${STACK_NAME}_web'
-            - 'traefik.port=80'
+            - 'traefik.port=39280'
             - 'traefik.frontend.rule=Host:manage.${DOMAIN}'
             - 'traefik.frontend.entryPoints=https'
             - 'traefik.frontend.headers.forceSTSHeader=true'
             - 'traefik.frontend.headers.STSSeconds=315360000'
             - 'traefik.frontend.headers.STSIncludeSubdomains=true'
             - 'traefik.frontend.headers.STSPreload=true'
+
+
 
 
 ########################
