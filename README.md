@@ -85,7 +85,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 ├── downloads
 ├── media
 ├── torrents-manual
-└── watch
+└── torrents-watch
 ```
 #### data/shared/downloads
 ```
