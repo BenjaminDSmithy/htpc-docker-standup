@@ -49,9 +49,9 @@ services:
             - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
         volumes:
-            - '/share/data/containers/apps/media/plex-server/config:/config'
-            - '/share/data/containers/apps/media/plex-server/transcode:/transcode'
-            - '/share/data/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/config:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/transcode:/transcode'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -100,9 +100,9 @@ services:
             - NAME_SERVERS=37.235.1.174,8.8.8.8,37.235.1.177,8.8.4.4
             - DEBUG=false
         volumes:
-            - '/share/data/containers/apps/media/delugevpn:/config'
-            - '/share/data/containers/apps/media/delugevpn/openvpn/${VPNPROVIDER}:/${VPNPROVIDER}'
-            - '/share/data/shared/downloads/torrents:/shared/downloads/torrents'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/delugevpn:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/delugevpn/openvpn/${VPNPROVIDER}:/${VPNPROVIDER}'
+            - '/${ROOT_FOLDER_PATH}/shared/downloads/torrents:/shared/downloads/torrents'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -135,9 +135,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/sonarr-${SONARR_VERSION}:/config'
-            - '/share/data/shared:/shared'
-            - '/share/data/@Recycle:/@Recycle'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/sonarr-${SONARR_VERSION}:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -170,9 +170,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/radarr-${RADARR_VERSION}:/config'
-            - '/share/data/shared:/shared'
-            - '/share/data/@Recycle:/@Recycle'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/radarr-${RADARR_VERSION}:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -205,9 +205,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/lidarr:/config'
-            - '/share/data/shared:/shared'
-            - '/share/data/@Recycle:/@Recycle'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/lidarr:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -240,9 +240,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/readarr:/config'
-            - '/share/data/shared:/shared'
-            - '/share/data/@Recycle:/@Recycle'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/readarr:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -275,9 +275,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/calibre-web:/config'
-            - '/share/data/shared:/shared'
-            - '/share/data/@Recycle:/@Recycle'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/calibre-web:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -310,9 +310,9 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/jackett:/config'
-            - '/share/data/shared/downloads/torrents:/shared/downloads/torrents'
-            - '/share/data/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/jackett:/config'
+            - '/${ROOT_FOLDER_PATH}/shared/downloads/torrents:/shared/downloads/torrents'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -345,8 +345,8 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/tautulli:/config'
-            - '/share/data/containers/apps/media/plex-server/Library/Application Support/Plex Media Server/Logs:/logs:ro'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/tautulli:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/Library/Application Support/Plex Media Server/Logs:/logs:ro'
             - '/etc/localtime:/etc/localtime:ro'
         depends_on:
             - plex
@@ -381,7 +381,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/ombi-${OMBI_VERSION}:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/ombi-${OMBI_VERSION}:/config'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
@@ -414,7 +414,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/muximux:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/muximux:/config'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'

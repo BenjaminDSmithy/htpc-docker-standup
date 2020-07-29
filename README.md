@@ -34,7 +34,11 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 
 ## Recomended Folder Structure
 
-#### /shared
+| NOTE |
+| ----------- |
+| `data` is used for root in the below example but you can choose your own as there is a ENV variable exposed called "`${ROOT_FOLDER_PATH}`". |
+
+#### data/shared
 ```
 ├── downloads
 ├── media
@@ -43,7 +47,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 ├── torrents-manual
 └── watch
 ```
-#### /shared/downloads
+#### data/shared/downloads
 ```
 ├── complete
 │   ├── blackhole
@@ -69,14 +73,14 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
     ├── nzb
     └── torrents
 ```
-#### /shared/media
+#### data/shared/media
 ```
 ├── AudioBooks
 ├── Books
 ├── Comics
 ├── DVR
 │   ├── Movies
-│   ├── TV
+│   └── TV
 ├── HomeVideos
 ├── Movies
 │   ├── ANIME
@@ -87,7 +91,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 │   ├── SD
 │   ├── SHORT
 │   ├── STAND-UP
-│   ├── UNKNOWN
+│   └── UNKNOWN
 ├── Movies4K
 ├── Music
 ├── MusicVideos
@@ -101,7 +105,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 │   ├── ENDED
 │   ├── KIDS
 │   ├── NEW
-│   ├── STAND-UP
+│   └── STAND-UP
 ├── TV4K
 ├── Videos
 └── VideosNAS
@@ -167,6 +171,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 
 
 #### -- Global Settings --
+- `ROOT_FOLDER_PATH` - Sets the ROOT path or all volume paths. Currently set to `data`.
 - `LOCALUSER=` - This is the local user of your linux account and account running docker
 - `HOSTNAME=` - Hostame of the server, can be found by executing `hostname` from command line
 - `IP_ADDRESS=` - Local IP Address of the server, should be static

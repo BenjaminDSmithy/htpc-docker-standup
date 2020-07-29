@@ -37,7 +37,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/portainer:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/portainer:/config'
             - '/var/run/docker.sock:/var/run/docker.sock'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
@@ -71,7 +71,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/duplicati:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/duplicati:/config'
             - '/share/data:/data'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
@@ -175,7 +175,7 @@ services:
             - PGID=${PGID}
             - INFLUXDB_DB=speedtest; CREATE DATABASE varken;
         volumes:
-            - '/share/data/containers/apps/media/influxdb:/var/lib/influxdb'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/influxdb:/var/lib/influxdb'
         labels:
             - 'traefik.enable=false'
 
@@ -200,7 +200,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/chronograf:/var/lib/chronograf'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/chronograf:/var/lib/chronograf'
         command:
             - chronograf
             - --influxdb-url=http://influxdb:8086
@@ -258,7 +258,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
         volumes:
-            - '/share/data/containers/apps/media/varken:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/varken:/config'
             - '/etc/localtime:/etc/localtime:ro'
         depends_on:
             - influxdb
@@ -298,7 +298,7 @@ services:
             - GF_SMTP_PASSWORD=${SMTP_PASS}
             - GF_SMTP_FROM_ADDRESS=${SMTP_FROM}
         volumes:
-            - '/share/data/containers/apps/media/grafana:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/grafana:/config'
         depends_on:
             - influxdb
         labels:
@@ -335,7 +335,7 @@ services:
             - PGID=${PGID}
         volumes:
             - '/var/run/docker.sock:/var/run/docker.sock'
-            - '/share/data/containers/apps/media/traefik:/etc/traefik/acme'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/traefik:/etc/traefik/acme'
         command:
             - --docker
             - --api
