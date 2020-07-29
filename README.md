@@ -24,7 +24,7 @@ It includes the following Services
 - [SpeedTest](https://github.com/sivel/speedtest-cli/) - for performing a speedtest and posting data to the database
 - [Varken](https://github.com/Boerderij/Varken) - for aggregating data from the Plex ecosystem into InfluxDB using Grafana for a frontend
 - [Grafana](https://grafana.com/) - for making dashboards out of the Varken Data
-- [Traefik](hhttps://traefik.io/) - Reverse Proxy and SSL Support
+- [Traefik](https://traefik.io/) - Reverse Proxy and SSL Support
 
 This project was heavily inspired by the [MediaBox](https://github.com/tom472/mediabox) project... Many Thanks!
 
