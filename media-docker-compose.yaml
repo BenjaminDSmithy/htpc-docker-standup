@@ -26,7 +26,7 @@ services:
     plex:
         container_name: plex-server
         image: plexinc/pms-docker:${PMSTAG}
-        restart: unless-stopped
+        restart: always
         networks:
             - web
         ports:
@@ -216,7 +216,7 @@ services:
     plexpy:
         image: linuxserver/tautulli
         container_name: tautulli
-        restart: unless-stopped
+        restart: always
         networks:
             - web
         expose:
