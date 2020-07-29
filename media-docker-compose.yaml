@@ -294,6 +294,41 @@ services:
 
 
     #--------------------------------------------#
+   ## BAZARR                                     ##
+   ##  Subtitle Management                       ##
+    #--------------------------------------------#
+    bazarr:
+        image: linuxserver/bazarr:${BAZARR_TAG}
+        container_name: bazarr
+        restart: unless-stopped
+        networks:
+            - web
+        expose:
+            - 6767
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/bazarr:/config'
+            - '/${ROOT_FOLDER_PATH}/shared:/shared'
+            - '/${ROOT_FOLDER_PATH}/@Recycle:/@Recycle'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=6767'
+            - 'traefik.frontend.rule=Host:bazarr.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
+    #--------------------------------------------#
    ## JACKETT                                    ##
    ##  RSS/TORZNAB Feed Creator                  ##
     #--------------------------------------------#
