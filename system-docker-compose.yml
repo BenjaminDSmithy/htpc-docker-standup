@@ -367,6 +367,62 @@ services:
 
 
 
+    #--------------------------------------------#
+   ## DENYHOSTS                                  ##
+  ###  Protecting your server against repeated   ###
+   ##         break-in attempts over SSH         ##
+    #--------------------------------------------#
+    denyhosts:
+        image: adriel/denyhosts:latest
+        container_name: denyhosts
+        restart: unless-stopped
+        networks:
+            - web
+        ports:
+            - '80:80/tcp'
+            - '443:443/tcp'
+            - '8080:8080/tcp'
+        expose:
+            - 8080
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+        volumes:
+            - '/var/log/secure:/var/log/secure:ro'
+            - '/etc/hosts.deny:/etc/hosts.deny'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/system/denyhosts/denyhosts.conf:/etc/denyhosts.conf:ro'
+        command:
+            - --docker
+            - --api
+            - --loglevel=debug
+            - "--entryPoints=Name:https Address::443 TLS"
+            - "--entryPoints=Name:http Address::80 Redirect.EntryPoint:https"
+            - --acme.entrypoint=https
+            - --acme=true
+            - --acme.domains=192.168.0.47
+            - --acme.email=${EMAIL}
+            - --acme.ondemand=true
+            - --acme.onhostrule
+            - --acme.httpchallenge
+            - --acme.httpchallenge.entrypoint=http
+            - --acme.storage=etc/traefik/acme/acme.json
+            - --docker.watch
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.docker.network=${STACK_NAME}_web'
+            - 'traefik.port=8080'
+            - 'traefik.frontend.rule=Host:denyhosts.${DOMAIN}'
+            - 'traefik.frontend.entryPoints=https'
+            - 'traefik.frontend.auth.basic=${TRAEFIK_AUTH}'
+            - 'traefik.frontend.headers.forceSTSHeader=true'
+            - 'traefik.frontend.headers.STSSeconds=315360000'
+            - 'traefik.frontend.headers.STSIncludeSubdomains=true'
+            - 'traefik.frontend.headers.STSPreload=true'
+
+
+
+
 ########################
 # GLOBAL CONFIGURATION #
 ########################
