@@ -27,6 +27,7 @@ services:
         container_name: plex-server
         image: plexinc/pms-docker:${PMSTAG}
         restart: always
+        hostname: ${HOSTNAME}
         networks:
             - web
         ports:
@@ -46,7 +47,6 @@ services:
             - PLEX_CLAIM=${PMSTOKEN}
             - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
-        hostname: ${HOSTNAME}
         volumes:
             - '/share/data/containers/apps/media/plex-server/config:/config'
             - '/share/data/containers/apps/media/plex-server/transcode:/transcode'
