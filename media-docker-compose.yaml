@@ -43,8 +43,8 @@ services:
             - '${IP_ADDRESS}:32414:32414/udp'
         environment:
             - TZ=${TZ}
-            - PLEX_UID=${PUID}
-            - PLEX_GID=${PGID}
+            - PUID=${PUID}
+            - PGID=${PGID}
             - PLEX_CLAIM=${PMSTOKEN}
             - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
