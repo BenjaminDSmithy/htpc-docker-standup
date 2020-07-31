@@ -226,7 +226,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 
 | WARNING |
 | ----------- |
-| `READARR` updates require a fresh database until further notice. There's only a unstable tag for the moment. |
+| `READARR` Advised to use static release tags as updates require a fresh database until further notice. There's only a unstable tag for the moment. |
 ---
 
 
