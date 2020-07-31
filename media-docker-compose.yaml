@@ -83,7 +83,7 @@ services:
             - UMASK=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/tautulli:/config'
-            - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/Library/Application Support/Plex Media Server/Logs:/logs:ro'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/config/Plex Media Server/Logs:/logs:ro'
             - '/etc/localtime:/etc/localtime:ro'
         depends_on:
             - plex
