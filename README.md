@@ -204,6 +204,8 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 |- `PLEX_LOGIN=`|
 |- `PLEX_PASSWORD=`|
 
+More info on Plex Autoscan can be found [here](https://github.com/l3uddz/plex_autoscan#docker)
+
 #### -- Version Tags --
 - `DEFAULT_TAG` - Defaults to the `latest` tag.
 - `SONARR_TAG` - Which version of Sonarr, available options: `latest` (The same as stable), `stable` (Stable version, V2), `unstable` (Unstable version, V2) and `phantom` (Unstable version, v3). You should use `phantom` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
