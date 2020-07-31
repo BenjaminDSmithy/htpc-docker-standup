@@ -193,10 +193,19 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 
 ### Environment File
 
+#### -- Plex --
+- `PMSTOKEN=` - The claim token for the server to obtain a real server token. If not provided, server is will not be automatically logged in. If server is already logged in, this parameter is ignored. You can obtain a claim token to login your server to your plex account by visiting [https://www.plex.tv/claim](https://www.plex.tv/claim)
+
+- `PLEX_TAG` - Which version of Plex Media Server, available options: `latest` (The same as stable), `stable` (Stable version), and `autoscan` (Stable version, includes Plex Autoscan).
+
+|Only for the `PLEX_TAG=autoscan` tag|
+|-----------|
+|- `PLEXAUTOSCAN_ARGS=`|
+|- `PLEX_LOGIN=`|
+|- `PLEX_PASSWORD=`|
+
 #### -- Version Tags --
 - `DEFAULT_TAG` - Defaults to the `latest` tag.
-
-- `PLEX_TAG` - Which version of Plex Media Server, available options: `latest`, `plexpass` and `public`. You should use `latest` unless you have special requirements or are a Plex Pass subscriber.
 - `SONARR_TAG` - Which version of Sonarr, available options: `latest` (The same as stable), `stable` (Stable version, V2), `unstable` (Unstable version, V2) and `phantom` (Unstable version, v3). You should use `phantom` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
 - `RADARR_TAG` - Which version of Radarr, available options: `latest` (The same as stable), `stable` (Stable version, V2), `unstable` (Unstable version, V2) and `aphrodite` (Unstable version, v3). You should use `aphrodite` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
 - `LIDARR_TAG` - Which version of Lidarr, available options: `latest` (The same as stable), `stable` (Stable version, master branch), `semi-stable` (Semi-Stable version, develop branch) and `unstable` (Unstable version, nightly).
@@ -236,7 +245,6 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 - `PUID=` - UID of the local user, can be found by executing `id` from the command line
 - `PGID=` - GID of the local user, can be found by executing `id` from the command line
 - `UMASK=` - UASK determines the settings of a mask that controls how file permissions are set for newly created files, can be set by executing `umask` from the command line
-- `PMSTOKEN=` - The claim token for the server to obtain a real server token. If not provided, server is will not be automatically logged in. If server is already logged in, this parameter is ignored. You can obtain a claim token to login your server to your plex account by visiting [https://www.plex.tv/claim](https://www.plex.tv/claim)
 - `VPNUNAME=` - Your VPN username from [PIA](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350)
 - `VPNPASS=` - Your VPN password from [PIA](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350)
 - `VPNPROVIDER=` - Your VPN provider, name must match a folder specified in `ovpn`. This defaults to `pia` if you copied `sample.env`.

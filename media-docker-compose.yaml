@@ -47,6 +47,12 @@ services:
             - PGID=${PGID}
             - PLEX_PASS=${PLEX_PASS}
             - PLEX_CLAIM=${PMSTOKEN}
+
+            # Only for the autoscan tag.
+            - PLEXAUTOSCAN_ARGS=${PLEXAUTOSCAN_ARGS}
+            - PLEX_LOGIN=${PLEX_LOGIN}
+            - PLEX_PASSWORD=${PLEX_PASSWORD}
+
             - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
         volumes:
