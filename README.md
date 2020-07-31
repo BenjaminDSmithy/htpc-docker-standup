@@ -235,6 +235,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 - `IP_ADDRESS=` - Local IP Address of the server, should be static
 - `PUID=` - UID of the local user, can be found by executing `id` from the command line
 - `PGID=` - GID of the local user, can be found by executing `id` from the command line
+- `UMASK=` - UASK determines the settings of a mask that controls how file permissions are set for newly created files, can be set by executing `umask` from the command line
 - `PMSTOKEN=` - The claim token for the server to obtain a real server token. If not provided, server is will not be automatically logged in. If server is already logged in, this parameter is ignored. You can obtain a claim token to login your server to your plex account by visiting [https://www.plex.tv/claim](https://www.plex.tv/claim)
 - `VPNUNAME=` - Your VPN username from [PIA](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350)
 - `VPNPASS=` - Your VPN password from [PIA](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350)
