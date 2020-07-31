@@ -36,6 +36,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/system/portainer:/config'
             - '/var/run/docker.sock:/var/run/docker.sock'
@@ -68,6 +69,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
             - WATCHTOWER_NOTIFICATIONS=email
             - WATCHTOWER_NOTIFICATION_EMAIL_FROM=${SMTP_FROM}
             - WATCHTOWER_NOTIFICATION_EMAIL_TO=${WATCHTOWER_EMAIL}
@@ -101,6 +103,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
         cap_add:
             - SYS_PTRACE
         volumes:
@@ -139,6 +142,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/system/duplicati:/config'
             - '/${ROOT_FOLDER_PATH}:/${ROOT_FOLDER_PATH}'
@@ -173,6 +177,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
             - INFLUXDB_DB=speedtest; CREATE DATABASE varken;
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/system/influxdb:/var/lib/influxdb'
@@ -199,6 +204,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/system/chronograf:/var/lib/chronograf'
         command:
@@ -234,6 +240,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
             - TEST_INTERVAL=${SPEEDTEST_INTERVAL}
         depends_on:
             - influxdb
@@ -257,6 +264,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/system/varken:/config'
             - '/etc/localtime:/etc/localtime:ro'
@@ -286,6 +294,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
             - GF_SERVER_DOMAIN=grafana.${DOMAIN}
             - GF_SERVER_ROOT_URL=https://grafana.${DOMAIN}
             - GF_PATHS_DATA=/config/data
@@ -333,6 +342,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
         volumes:
             - '/var/run/docker.sock:/var/run/docker.sock'
             - '/${ROOT_FOLDER_PATH}/containers/apps/system/traefik:/etc/traefik/acme'
@@ -388,6 +398,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - UMASK=${UMASK}
         volumes:
             - '/var/log/secure:/var/log/secure:ro'
             - '/etc/hosts.deny:/etc/hosts.deny'
