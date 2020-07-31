@@ -195,12 +195,13 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 
 #### -- Version Tags --
 - `DEFAULT_TAG` - Defaults to the `latest` tag.
+
 - `PLEX_TAG` - Which version of Plex Media Server, available options: `latest`, `plexpass` and `public`. You should use `latest` unless you have special requirements or are a Plex Pass subscriber.
-- `SONARR_TAG` - Which version of Sonarr, available options: `latest` (currently v2), `5.14` (latest but run on Mono 5.14), `develop` (currently v2) and `preview` (currently v3). You should use `preview` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
-- `RADARR_TAG` - Which version of Radarr, available options: `latest`, `5.14` (latest but run on Mono 5.14), `nightly` and `preview` (v3 builds). You should use `preview` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
-- `LIDARR_TAG` - Which version of Lidarr, available options: `latest` (Stable Lidarr releases) and `preview` (Nightly Lidarr Releases).
+- `SONARR_TAG` - Which version of Sonarr, available options: `latest` (The same as stable), `stable` (Stable version, V2), `unstable` (Unstable version, V2) and `phantom` (Unstable version, v3). You should use `phantom` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
+- `RADARR_TAG` - Which version of Radarr, available options: `latest` (The same as stable), `stable` (Stable version, V2), `unstable` (Unstable version, V2) and `aphrodite` (Unstable version, v3). You should use `aphrodite` as the v3 builds are now relativel stable and are transitioning now from alpha to beta release.
+- `LIDARR_TAG` - Which version of Lidarr, available options: `latest` (The same as stable), `stable` (Stable version, master branch), `semi-stable` (Semi-Stable version, develop branch) and `unstable` (Unstable version, nightly).
 - `CALIBRE_TAG` - Which version of Calibre (Web), available options: `latest` (Stable Calibre (Web) releases).
-- `BAZARR_TAG` - Which version of Bazarr, available options: `latest` (Stable Bazarr releases)
+- `BAZARR_TAG` - Which version of Bazarr, available options: `latest` (The same as stable), `stable` (Stable version), and `unstable` (Unstable version, development branch).
 - `ORGANIZR_TAG` - Which version of Organizr, available options:
     - The `latest` tag will get you the original Organizr v2 image.
     - The php-fpm tag includes the implementation of a socket connection for PHP-FPM instead of an HTTP connection. It also includes the PM changes for the www.conf file that we recommend to users that are just getting started. One thing to note is that, if you mounted the /etc/php7/php-fpm.d/ directory for the container to your Host, you MUST recreate your container WITHOUT that mount. You will also want to remove the /path/to/Org/config/php directory from your Docker Host as that can cause issues as well. This is designed as a drop-in to get PHP-FPM working without having to mount extra directories, etc.
@@ -208,7 +209,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
     - The `armhf` tag is an adaptation of the php-fpm image for ArmHF platforms like the RaspberryPi.
     - The `arm64` tag is an adaptation of the php-fpm image for Arm64 platforms like the ASRock64.
     - The `dev-` equivalent tags pull from the v2-develop branch of the GitHub repository instead of the main v2-master branch.
-- `OMBI_TAG` - Which version of Ombi, available options: `latest` (Stable Ombi releases), `development` (Releases from the develop branch), and `v4-preview`.
+- `OMBI_TAG` - Which version of Ombi, available options: `latest` (The same as stable), `stable` (v3 releases, probably the last one), and `unstable` (v4 releases).
 - `TRAEFIX_TAG` - Currently set to `v1.7.16` due to breaking change in 2.x
 
 ---

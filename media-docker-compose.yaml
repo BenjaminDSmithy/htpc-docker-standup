@@ -45,6 +45,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
+            - PLEX_PASS=${PLEX_PASS}
             - PLEX_CLAIM=${PMSTOKEN}
             - ADVERTISE_IP=http://${IP_ADDRESS}:32400/
             - ALLOWED_NETWORKS=${CIDR_ADDRESS}
@@ -68,7 +69,7 @@ services:
    ##  Monitoring Service for PLEX Usage         ##
     #--------------------------------------------#
     plexpy:
-        image: linuxserver/tautulli:${DEFAULT_TAG}
+        image: hotio/tautulli:${DEFAULT_TAG}
         container_name: tautulli
         restart: always
         networks:
@@ -199,7 +200,7 @@ services:
    ##  TV Series Management                      ##
     #--------------------------------------------#
     sonarr:
-        image: linuxserver/sonarr:${SONARR_TAG}
+        image: hotio/sonarr:${SONARR_TAG}
         container_name: sonarr-${SONARR_VERSION}
         restart: unless-stopped
         networks:
@@ -235,7 +236,7 @@ services:
    ##  TV Series Management                      ##
     #--------------------------------------------#
     sonarr4k:
-        image: linuxserver/sonarr:${SONARR_TAG}
+        image: hotio/sonarr:${SONARR_TAG}
         container_name: sonarr4k-${SONARR_VERSION}
         restart: unless-stopped
         networks:
@@ -271,7 +272,7 @@ services:
    ##  Movie Management                          ##
     #--------------------------------------------#
     radarr:
-        image: linuxserver/radarr:${RADARR_TAG}
+        image: hotio/radarr:${RADARR_TAG}
         container_name: radarr-${RADARR_VERSION}
         restart: unless-stopped
         networks:
@@ -307,7 +308,7 @@ services:
    ##  Movie Management                          ##
     #--------------------------------------------#
     radarr4k:
-        image: linuxserver/radarr:${RADARR_TAG}
+        image: hotio/radarr:${RADARR_TAG}
         container_name: radarr4k-${RADARR_VERSION}
         restart: unless-stopped
         networks:
@@ -343,7 +344,7 @@ services:
    ##  Music Management                          ##
     #--------------------------------------------#
     lidarr:
-        image: linuxserver/lidarr:${LIDARR_TAG}
+        image: hotio/lidarr:${LIDARR_TAG}
         container_name: lidarr
         restart: unless-stopped
         networks:
@@ -451,7 +452,7 @@ services:
    ##  Subtitle Management                       ##
     #--------------------------------------------#
     bazarr:
-        image: linuxserver/bazarr:${BAZARR_TAG}
+        image: hotio/bazarr:${BAZARR_TAG}
         container_name: bazarr
         restart: unless-stopped
         networks:
@@ -487,7 +488,7 @@ services:
    ##  RSS/TORZNAB Feed Creator                  ##
     #--------------------------------------------#
     jackett:
-        image: linuxserver/jackett:${DEFAULT_TAG}
+        image: hotio/jackett:${DEFAULT_TAG}
         container_name: jackett
         restart: unless-stopped
         networks:
@@ -523,7 +524,7 @@ services:
    ##  Request Service for Plex Content          ##
     #--------------------------------------------#
     ombi:
-        image: linuxserver/ombi:${OMBI_TAG}
+        image: hotio/ombi:${OMBI_TAG}
         container_name: ombi-${OMBI_VERSION}
         restart: unless-stopped
         networks:
