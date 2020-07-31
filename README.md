@@ -166,7 +166,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 ## Install Instructions
 
 ### Prerequisites
-- [Ubuntu 16.04 LTS](https://www.ubuntu.com/)
+- [Ubuntu 18.04.4 or 20.04 LTS](https://www.ubuntu.com/)
 - VPN Account from [PIA](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350)
 - [Git](https://git-scm.com/)
 - [Docker](https://www.docker.com/)
