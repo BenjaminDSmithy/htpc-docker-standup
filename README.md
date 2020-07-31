@@ -132,6 +132,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 │   ├── KIDS
 │   ├── NEW
 │   ├── SD
+│   ├── SHARED [FOR MEDIA YOU WANT IN BOTH YOUR MOVIES + KIDS PLEX LIBARIES]
 │   ├── SHORT
 │   ├── STAND-UP
 │   └── UNKNOWN
@@ -151,6 +152,7 @@ This project was heavily inspired by the [MediaBox](https://github.com/tom472/me
 │   ├── ENDED
 │   ├── KIDS
 │   ├── NEW
+│   ├── SHARED [FOR MEDIA YOU WANT IN BOTH YOUR TV + KIDS PLEX LIBARIES]
 │   └── STAND-UP
 ├── TV4K
 ├── Videos
