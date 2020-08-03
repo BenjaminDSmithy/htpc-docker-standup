@@ -192,7 +192,7 @@ services:
         labels:
             - 'traefik.enable=true'
             - 'traefik.docker.network=${STACK_NAME}_web'
-            - 'traefik.port=8112'
+            - 'traefik.port=${WEBUI_PORT}'
             - 'traefik.frontend.rule=Host:qb.${DOMAIN}'
             - 'traefik.frontend.entryPoints=https'
             - 'traefik.frontend.headers.forceSTSHeader=true'
