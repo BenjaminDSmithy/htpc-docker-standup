@@ -158,8 +158,8 @@ services:
         ports:
             - '${IP_ADDRESS}:6881:6881/tcp'
             - '${IP_ADDRESS}:6881:6881/udp'
-            - '${IP_ADDRESS}:8080:8080/tcp'
-            - '${IP_ADDRESS}:8118:8118/tcp'
+            - '${IP_ADDRESS}:${WEBUI_PORT}:${WEBUI_PORT}/tcp' ## Access qBittorrent (web ui)
+            - '${IP_ADDRESS}:8118:8118/tcp' ## Access Privoxy
         expose:
             - 8112
         cap_add:
