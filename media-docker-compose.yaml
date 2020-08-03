@@ -46,7 +46,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
             - PLEX_PASS=${PLEX_PASS}
-            - PLEX_CLAIM=${PMSTOKEN}
+            - PLEX_CLAIM=${PLEX_TOKEN}
 
             # Only for the autoscan tag.
             - PLEXAUTOSCAN_ARGS=${PLEXAUTOSCAN_ARGS}
