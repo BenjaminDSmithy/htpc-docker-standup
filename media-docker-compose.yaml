@@ -86,7 +86,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/tautulli:/config'
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/plex-server/config/Plex Media Server/Logs:/logs:ro'
@@ -127,7 +127,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/organizr-${ORGANIZR_VERSION}:/config'
             - '/etc/localtime:/etc/localtime:ro'
@@ -168,7 +168,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
             - VPN_ENABLED=${VPN_ENABLED}
             - VPN_USER=${VPN_UNAME}
             - VPN_PASS=${VPN_PASS}
@@ -219,7 +219,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/sonarr-${SONARR_VERSION}:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -255,7 +255,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/sonarr-${SONARR_VERSION}:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -291,7 +291,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/radarr-${RADARR_VERSION}:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -327,7 +327,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/radarr4k-${RADARR_VERSION}:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -363,7 +363,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/lidarr:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -399,7 +399,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/readarr:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -435,7 +435,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/calibre-web:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -471,7 +471,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/bazarr:/config'
             - '/${ROOT_FOLDER_PATH}/shared:/shared'
@@ -507,7 +507,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/jackett:/config'
             - '/${ROOT_FOLDER_PATH}/shared/downloads/torrents:/shared/downloads/torrents'
@@ -543,7 +543,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/ombi-${OMBI_VERSION}:/config'
             - '/etc/localtime:/etc/localtime:ro'
@@ -578,7 +578,7 @@ services:
             - TZ=${TZ}
             - PUID=${PUID}
             - PGID=${PGID}
-            - UMASK=${UMASK}
+            - UMASK_SET=${UMASK}
         volumes:
             - '/${ROOT_FOLDER_PATH}/containers/apps/media/requestrr:/root/config'
             - '/etc/localtime:/etc/localtime:ro'
