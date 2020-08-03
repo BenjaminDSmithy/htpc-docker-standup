@@ -26,7 +26,7 @@ services:
     #--------------------------------------------#
     plex:
         container_name: plex-server
-        image: plexinc/pms-docker:${PLEX_TAG}
+        image: hotio/plex:${PLEX_TAG}
         restart: always
         hostname: ${HOSTNAME}
         networks:
