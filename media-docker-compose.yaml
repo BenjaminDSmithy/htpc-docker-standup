@@ -146,19 +146,20 @@ services:
 
 
     #--------------------------------------------#
-   ## DELUGEVPN                                  ##
-   ##  Deluge Torrent Client + VPN               ##
+   ## QBITTORRENT+VPN                            ##
+   ##  qBitTorrent Client + OpenVPN              ##
     #--------------------------------------------#
-    arch-delugevpn:
-        image: binhex/arch-delugevpn:${DEFAULT_TAG}
-        container_name: delugevpn
+    qbittorrent-vpn:
+        image: binhex/arch-qbittorrentvpn:${DEFAULT_TAG}
+        container_name: qbittorrentvpn
         restart: unless-stopped
         networks:
             - web
         ports:
-            - '${IP_ADDRESS}:8118:8118'
-            - '${IP_ADDRESS}:58846:58846'
-            - '${IP_ADDRESS}:58946:58946'
+            - '${IP_ADDRESS}:6881:6881/tcp'
+            - '${IP_ADDRESS}:6881:6881/udp'
+            - '${IP_ADDRESS}:8080:8080/tcp'
+            - '${IP_ADDRESS}:8118:8118/tcp'
         expose:
             - 8112
         cap_add:
@@ -168,30 +169,31 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
             - UMASK=${UMASK}
-            - VPN_ENABLED=yes
-            - VPN_USER=${VPNUNAME}
-            - VPN_PASS=${VPNPASS}
+            - VPN_ENABLED=${VPN_ENABLED}
+            - VPN_USER=${VPN_UNAME}
+            - VPN_PASS=${VPN_PASS}
             - VPN_REMOTE=${VPN_REMOTE}
             - VPN_PORT=1198
             - VPN_PROTOCOL=udp
             - VPN_DEVICE_TYPE=tun
-            - VPN_PROV=${VPNPROVIDER}
-            - STRONG_CERTS=no
-            - ENABLE_PRIVOXY=yes
-            - STRICT_PORT_FORWARD=yes
+            - VPN_PROV=${VPN_PROVIDER}
+            - VPN_OPTIONS=${VPN_OPTIONS}
+            - ENABLE_PRIVOXY=${ENABLE_PRIVOXY}
+            - STRICT_PORT_FORWARD=${STRICT_PORT_FORWARD}
             - LAN_NETWORK=${CIDR_ADDRESS}
-            - NAME_SERVERS=37.235.1.174,8.8.8.8,37.235.1.177,8.8.4.4
+            - NAME_SERVERS=${NAME_SERVERS}
             - DEBUG=false
+            - WEBUI_PORT=${WEBUI_PORT}
         volumes:
-            - '/${ROOT_FOLDER_PATH}/containers/apps/media/delugevpn:/config'
-            - '/${ROOT_FOLDER_PATH}/containers/apps/media/delugevpn/openvpn/${VPNPROVIDER}:/${VPNPROVIDER}'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/qb-vpn:/config'
+            - '/${ROOT_FOLDER_PATH}/containers/apps/media/qb-vpn/openvpn/${VPNPROVIDER}:/${VPNPROVIDER}'
             - '/${ROOT_FOLDER_PATH}/shared/downloads/torrents:/shared/downloads/torrents'
             - '/etc/localtime:/etc/localtime:ro'
         labels:
             - 'traefik.enable=true'
             - 'traefik.docker.network=${STACK_NAME}_web'
             - 'traefik.port=8112'
-            - 'traefik.frontend.rule=Host:deluge.${DOMAIN}'
+            - 'traefik.frontend.rule=Host:qb.${DOMAIN}'
             - 'traefik.frontend.entryPoints=https'
             - 'traefik.frontend.headers.forceSTSHeader=true'
             - 'traefik.frontend.headers.STSSeconds=315360000'
