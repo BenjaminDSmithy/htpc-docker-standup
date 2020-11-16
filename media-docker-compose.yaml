@@ -112,7 +112,7 @@ services:
    ##  Web Frontend for HTPC Management          ##
     #--------------------------------------------#
     organizr:
-        image: organizrtools/organizr-v2:${DEFAULT_TAG}
+        image: organizr/organizr
         container_name: organizr-${ORGANIZR_VERSION}
         restart: unless-stopped
         networks:
