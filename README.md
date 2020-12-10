@@ -11,7 +11,7 @@ It includes the following Services
     - [Plex Media Server](https://www.plex.tv/) - for managing media and serving files to Plex Clients
     - [Tautulli](http://tautulli.com/) - for Plex library statistics and usage
     - [Organizr](https://organizr.app/) - for simple web based management
-    - [Deluge](https://deluge-torrent.org/) + [Private Internet Access](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350) - for downloading torrents... "safely"
+    - [qBittorrent](https://www.qbittorrent.org/) + [Private Internet Access](https://www.privateinternetaccess.com/pages/buy-vpn/toz) or [TorGuard](https://torguard.net/aff.php?aff=4350) - for downloading torrents... "safely"
     - [Sonarr](https://sonarr.tv/) - for TV Series Management
     - [Radarr](https://radarr.video/) - for Movie Management
     - [Lidarr](https://lidarr.audio/) - for Music Management
